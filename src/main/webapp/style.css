@@ -1,0 +1,98 @@
+@charset "UTF-8";
+*
+{
+	margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000000;
+    color: #FFFFFF;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ascii 
+{
+    font-family: monospace;
+    font-size: 14px;
+    line-height: 1.1;
+    color: inherit;
+    display: inline-block;
+    text-align: left;
+    white-space: pre;
+}
+
+.logo
+{
+    max-width: 100%;
+    height: auto;
+}
+
+input, textarea, select 
+{
+    font-family: inherit;
+    font-size: 16px;
+    border-radius: 32px;
+    height: 32px;
+    width: 250px;
+    padding : 0 15px;
+    margin: 10px 10px 10px 10px;
+}
+
+input:hover
+{
+	border: 3px solid rgb(255, 90, 23);
+}
+
+button
+{
+	font-family: inherit;
+	font-weight: bold;
+    font-size: 16px;
+    border-radius: 32px;
+    height: 32px;
+    width: 150px;
+    margin: 10px 0;
+    cursor: pointer;
+    background-color: #FFFFFF;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+button:hover
+{
+    background-color: rgb(255, 90, 23);
+    color: #FFFFFF;
+}
+
+h1, form, footer
+{
+    text-align: center;
+    height: auto;
+    margin: 16px;
+}
+
+h1 
+{
+	font-size: 40px;
+}
+
+footer a
+{
+	font-weight: bold;
+	color: #FFFFFF;
+    text-decoration: none;
+}
+
+footer a:hover
+{
+	color: rgb(255, 90, 23);
+}

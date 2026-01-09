@@ -1,0 +1,31 @@
+
+
+Primer Lobo //
+// Stats
+Vida : 55
+Defensa : reducción de daño 10%
+Daño : Usar DADO multiplicar x 0.5
+Velocidad : Slow 	(SEGUNDO TURNO QUE JUEGUE PRIMERO EL JUGADOR)
+
+Jauria de Lobos (Habilidad Especial)
+Descripción : Invoca 2 Lobos que atacan junto a Primor Lobo.	
+Daño : Usar DADO multiplicar x 0.3 (cada lobo)
+Vida de cada lobo : 20
+Defensa de cada lobo : reducción de daño 5%
+Velocidad de cada lobo : Slow 	(SEGUNDO TURNO QUE JUEGUE PRIMERO EL JUGADOR)
+Duración : 3 turnos
+------
+
+
+Final BOSS Dragón Anciano //
+    Stats
+Vida : 200	
+Defensa : reducción de daño 20%
+Daño : Usar DADO multiplicar x 1.0
+Velocidad : Normal
+Habilidad Especial: Aliento de Fuego
+Descripción : El Dragón Anciano exhala una poderosa llamarada que inflige daño a todos los enemigos.
+Daño : Usar DADO multiplicar x 0.7 (a todos los enemigos)// Fith pegara tambien
+Velocidad : Fast (PRIMERO EN CADA TURNO)
+Duración : 2 turnos
+------	

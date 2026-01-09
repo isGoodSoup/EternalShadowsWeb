@@ -1,0 +1,20 @@
+true
+Al usar, ejecutar o modificar este software aceptas los siguientes términos:
+	I. Licencia
+El software se distribuye de forma gratuita. 
+Se permite su uso, copia, estudio y modificación para fines no comerciales.
+	II. Redistribución
+La redistribución del código fuente o versiones modificadas está permitida 
+siempre que se mantenga este aviso y se reconozca la autoría original.
+	III. Propiedad
+Los autores conservan todos los derechos sobre el código, la historia y el 
+contenido del juego. Este acuerdo no transfiere la propiedad del software.
+	IV. Privacidad
+El juego no recopila ni transmite datos personales. Toda la información se 
+almacena localmente.
+	V. Exención de responsabilidad
+El software se proporciona “tal cual”, sin garantías. Los autores no se 
+responsabilizan de daños derivados de su uso.
+	VI. Prohibición comercial
+No se permite el uso del software, total o parcial, con fines comerciales.
+El uso del software implica la aceptación de este acuerdo.
