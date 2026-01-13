@@ -6,22 +6,7 @@
 	    <link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
-		<pre class="ascii">
-  88888888b d888888P  88888888b  888888ba  888888ba   .d888888  dP
-  88           88     88         88    `8b 88    `8b d8'    88  88
-  88aaaa       88     88aaaa     88aaaa8P' 88     88 88aaaaa88a 88
-  88           88     88         88   `8b. 88     88 88     88  88
-  88           88     88         88     88 88     88 88     88  88
-  88888888P    dP     88888888P  dP     dP dP     dP 88     88  88888888P
-
-  .d88888b  dP     dP   .d888888  888888ba   .88888.  dP   dP   dP .d88888b
-  88.    "' 88     88  d8'    88  88    `8b d8'   `8b 88   88   88 88.    "'
-  `Y88888b. 88aaaaa88  88aaaaa88  88     88 88     88 88  .8P  .8P `Y88888b.
-        `8b 88     88  88     88  88     88 88     88 88  d8'  d8'       `8b
-  d8'   .8P 88     88  88     88  88    .8P Y8.   .8P 88.d8P8.d8P  d8'   .8P
-   Y88888P  dP     dP  88     88  8888888P   `8888P'  8888' Y88'    Y88888P
-	    </pre>
-<!-- 		<img src="logo_v1.jpeg" alt="EternalShadows" class="logo"> -->
+		<img src="logo_v2.jpeg" alt="EternalShadows" class="logo">
 	    <form action="http://localhost:8084/EternalShadowsWeb/login" method="post">
 	        <input type="text" id="username" name="username" placeholder="Usuario" required>
 	        <br>
