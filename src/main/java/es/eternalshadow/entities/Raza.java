@@ -14,95 +14,96 @@ import jakarta.persistence.Table;
 @Table(name = "TB_RAZA")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Raza implements Accionable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name = "TIPO", nullable = false, length = 50)
-	private String tipo;
-	@Column(name = "FUERZA", nullable = false)
-	private int fuerza;
-	@Column(name = "RESISTENCIA", nullable = false)
-	private int resistencia;
-	@Column(name = "VELOCIDAD", nullable = false)
-	private int velocidad;
-	@Column(name = "MAGIA", nullable = false)
-	private int magia;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    
+    @Column(name = "TIPO", nullable = false, length = 50)
+    private String tipo;
+    
+    @Column(name = "FUERZA", nullable = false)
+    private int fuerza;
+    
+    @Column(name = "RESISTENCIA", nullable = false)
+    private int resistencia;
+    
+    @Column(name = "VELOCIDAD", nullable = false)
+    private int velocidad;
+    
+    @Column(name = "MAGIA", nullable = false)
+    private int magia;
 
-	public Raza() {
-	}
+    public Raza() {
+    }
 
-	public Raza(int id, String tipo, int fuerza, int resistencia, int velocidad,
-			int magia) {
-		super();
-		this.id = id;
-		this.tipo = tipo;
-		this.fuerza = fuerza;
-		this.resistencia = resistencia;
-		this.velocidad = velocidad;
-		this.magia = magia;
-	}
-	
-	public Raza(String tipo, int fuerza, int resistencia, int velocidad,
-			int magia) {
-		super();
-		this.tipo = tipo;
-		this.fuerza = fuerza;
-		this.resistencia = resistencia;
-		this.velocidad = velocidad;
-		this.magia = magia;
-	}
+    public Raza(int id, String tipo, int fuerza, int resistencia, int velocidad, int magia) {
+        this.id = id;
+        this.tipo = tipo;
+        this.fuerza = fuerza;
+        this.resistencia = resistencia;
+        this.velocidad = velocidad;
+        this.magia = magia;
+    }
+    
+    public Raza(String tipo, int fuerza, int resistencia, int velocidad, int magia) {
+        this.tipo = tipo;
+        this.fuerza = fuerza;
+        this.resistencia = resistencia;
+        this.velocidad = velocidad;
+        this.magia = magia;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public String getTipo() {
+        return tipo;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
-	public int getFuerza() {
-		return fuerza;
-	}
+    public int getFuerza() {
+        return fuerza;
+    }
 
-	public void setFuerza(int fuerza) {
-		this.fuerza = fuerza;
-	}
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
 
-	public int getResistencia() {
-		return resistencia;
-	}
+    public int getResistencia() {
+        return resistencia;
+    }
 
-	public void setResistencia(int resistencia) {
-		this.resistencia = resistencia;
-	}
+    public void setResistencia(int resistencia) {
+        this.resistencia = resistencia;
+    }
 
-	public int getVelocidad() {
-		return velocidad;
-	}
+    public int getVelocidad() {
+        return velocidad;
+    }
 
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
-	}
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
 
-	public int getMagia() {
-		return magia;
-	}
+    public int getMagia() {
+        return magia;
+    }
 
-	public void setMagia(int magia) {
-		this.magia = magia;
-	}
+    public void setMagia(int magia) {
+        this.magia = magia;
+    }
 
-	public String toString() {
-		return "Raza [id=" + id + ", tipo=" + tipo + ", fuerza=" + fuerza
-				+ ", resistencia=" + resistencia + ", velocidad=" + velocidad
-				+ ", magia=" + magia + "]";
-	}
+    @Override
+    public String toString() {
+        return "Raza [id=" + id + ", tipo=" + tipo + ", fuerza=" + fuerza + ", resistencia=" + resistencia + ", velocidad=" + velocidad + ", magia=" + magia + "]";
+    }
 }
