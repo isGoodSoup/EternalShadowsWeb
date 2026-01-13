@@ -7,6 +7,7 @@ import es.eternalshadow.dao.interfaces.JugadorDAO;
 import es.eternalshadow.dto.JugadorDTO;
 import es.eternalshadow.entities.Jugador;
 import es.eternalshadow.main.GameContext;
+import es.eternalshadow.mappers.JugadorMapper;
 import es.eternalshadow.service.interfaces.JugadorService;
 
 public class JugadorServiceImpl implements JugadorService {
@@ -36,18 +37,10 @@ public class JugadorServiceImpl implements JugadorService {
 	
 	@Override
 	public void crearJugador(JugadorDTO dto) {
-        Jugador jugador = new Jugador(
-            dto.getNombre(),
-            dto.getTipo(),
-            dto.getNivel(),
-            dto.getPuntosVida(),
-            dto.getMoral(),
-            dto.getArmas(),
-            dto.getEscudos(),
-            dto.getInventario()
-        );
-        jugadorDAO.guardar(jugador);
-    }
+	    Jugador jugador = JugadorMapper.toEntity(dto);
+	    jugadorDAO.guardar(jugador);
+	}
+
     
 	@Override
     public void eliminarJugador(Long id) {

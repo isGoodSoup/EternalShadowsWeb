@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "TB_ITEM")
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class ItemEntity {
+public class Item {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +24,11 @@ public abstract class ItemEntity {
     @Column(name = "CANTIDAD")
     private int cantidad;
 
-    public ItemEntity() {
+    public Item() {
         // Constructor para JPA
     }
     
-    public ItemEntity(String nombre, int cantidad) {
+    public Item(String nombre, int cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }

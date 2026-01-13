@@ -1,8 +1,9 @@
 package es.eternalshadow.pojos;
 
+import es.eternalshadow.dto.ItemDTO;
 import es.eternalshadow.enums.Reliquias;
 
-public class Artefacto extends Item {
+public class Artefacto extends ItemDTO {
 	private Reliquias artefacto;
 
 	public Artefacto(String nombre, int cantidad, Reliquias artefacto) {

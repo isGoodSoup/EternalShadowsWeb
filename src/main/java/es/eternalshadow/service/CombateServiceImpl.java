@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Random;
 
 import es.eternalshadow.entities.Criatura;
+import es.eternalshadow.entities.Enemigo;
 import es.eternalshadow.entities.Jugador;
 import es.eternalshadow.exception.LimiteCombateException;
 import es.eternalshadow.main.GameContext;
-import es.eternalshadow.pojos.Enemigo;
 import es.eternalshadow.service.interfaces.CombateService;
 
 public class CombateServiceImpl implements CombateService {

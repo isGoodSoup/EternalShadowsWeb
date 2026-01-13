@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "TB_ARMA")
-public class Arma extends ItemEntity {
+public class Arma extends Item {
     
     @Enumerated(EnumType.STRING)
     @Column(name = "ARMAMENTO", nullable = false, length = 50)

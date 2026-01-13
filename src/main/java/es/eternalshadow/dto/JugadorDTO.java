@@ -6,7 +6,6 @@ import java.util.Map;
 
 import es.eternalshadow.entities.Arma;
 import es.eternalshadow.entities.Escudo;
-import es.eternalshadow.pojos.Item;
 
 public class JugadorDTO {
 	private Long id;
@@ -17,7 +16,7 @@ public class JugadorDTO {
 	private int moral;
 	private List<Arma> armas;
 	private List<Escudo> escudos;
-	private Map<String, Item> inventario;
+	private Map<String, ItemDTO> inventario;
 
 	public JugadorDTO() {}
 
@@ -30,8 +29,7 @@ public class JugadorDTO {
 		this.moral = moral;
 		this.armas = armas;
 		this.escudos = escudos;
-		
-		setInventario();
+		setInventario(inventario);
 	}
 
 	public JugadorDTO(String nombre, String tipo, int nivel, int puntosVida, int moral) {
@@ -41,12 +39,11 @@ public class JugadorDTO {
 		this.nivel = nivel;
 		this.puntosVida = puntosVida;
 		this.moral = moral;
-		
-		setInventario();
+		setInventario(inventario);
 	}
 	
 	public JugadorDTO(String nombre, String tipo, int nivel, int puntosVida, int moral, 
-            List<Arma> armas, List<Escudo> escudos, Map<String, Item> inventario) {
+            List<Arma> armas, List<Escudo> escudos, Map<String, ItemDTO> inventario) {
 		this.nombre = nombre;
 		this.tipo = tipo;
 		this.nivel = nivel;
@@ -121,11 +118,11 @@ public class JugadorDTO {
 		this.escudos = escudos;
 	}
 
-	public Map<String, Item> getInventario() {
+	public Map<String, ItemDTO> getInventario() {
 		return inventario;
 	}
 
-	public void setInventario() {
-		this.inventario = new HashMap<>();
+	public void setInventario(Map<String, ItemDTO> inventario) {
+	    this.inventario = inventario != null ? inventario : new HashMap<>();
 	}
 }

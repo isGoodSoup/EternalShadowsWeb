@@ -1,18 +1,15 @@
-package es.eternalshadow.pojos;
+package es.eternalshadow.dto;
 
-// NO anotaciones JPA - es un POJO puro
-public abstract class Item {
+public class ItemDTO {
     private String nombre;
     private int cantidad;
 
-    public Item(String nombre, int cantidad) {
+    public ItemDTO(String nombre, int cantidad) {
         this.nombre = nombre;
         this.cantidad = cantidad;
     }
     
-    public Item() {
-        // Constructor sin parámetros
-    }
+    public ItemDTO() {}
 
     public String getNombre() {
         return nombre;

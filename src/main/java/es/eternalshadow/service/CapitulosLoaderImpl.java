@@ -8,14 +8,14 @@ import java.util.Map;
 
 import org.jline.reader.LineReader;
 
+import es.eternalshadow.dto.ItemDTO;
 import es.eternalshadow.entities.Criatura;
+import es.eternalshadow.entities.Enemigo;
 import es.eternalshadow.enums.ParsingKeys;
 import es.eternalshadow.interfaces.Accion;
 import es.eternalshadow.main.GameContext;
 import es.eternalshadow.motor.Escena;
 import es.eternalshadow.motor.Opcion;
-import es.eternalshadow.pojos.Enemigo;
-import es.eternalshadow.pojos.Pocion;
 import es.eternalshadow.service.interfaces.CapitulosLoader;
 import es.eternalshadow.story.Capitulo;
 import es.eternalshadow.util.ExceptionsHandler;
@@ -171,10 +171,11 @@ public class CapitulosLoaderImpl implements CapitulosLoader {
 	public void startAcciones() {
 		Map<String, Accion> acciones = context.getAcciones();
 
-		acciones.put("addPocion",
-				(jugadores, criatura) -> context.getJugador().getInventario()
-						.put("Pocion de Sanación",
-								new Pocion("Pocion de Curacion", 1)));
+		acciones.put("addPocion", (jugadores, criatura) -> {
+		    ItemDTO pocionDTO = new ItemDTO("Poción de Curación", 1);
+		    context.getJugador().getInventario().put("Poción de Sanación", pocionDTO);
+		});
+
 		acciones.put("aumentarMoral",
 				(jugadores, criatura) -> context.getJugador().modMoral(1));
 		acciones.put("luchar", (jugadores, criatura) -> 
