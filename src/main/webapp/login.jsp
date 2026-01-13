@@ -3,7 +3,7 @@
 	<head>
 	    <meta charset="UTF-8">
 	    <title>EternalShadows - Login</title>
-	    <link rel="stylesheet" href="style.css">
+	    <link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
 		<pre class="ascii">
@@ -21,13 +21,13 @@
   d8'   .8P 88     88  88     88  88    .8P Y8.   .8P 88.d8P8.d8P  d8'   .8P
    Y88888P  dP     dP  88     88  8888888P   `8888P'  8888' Y88'    Y88888P
 	    </pre>
-		<img src="logo_v1.jpeg" alt="EternalShadows" class="logo">
+<!-- 		<img src="logo_v1.jpeg" alt="EternalShadows" class="logo"> -->
 	    <form action="http://localhost:8084/EternalShadowsWeb/login" method="post">
 	        <input type="text" id="username" name="username" placeholder="Usuario" required>
 	        <br>
 	        <input type="password" id="password" name="password" placeholder="Contraseña" required>
 	        <br>
-	        <button type="submit"> Login </button>
+	        <button type="submit">Login</button>
 	    </form>
 	
 	    <footer>No tienes cuenta? <a href="registro.jsp">Únete</a></footer>
