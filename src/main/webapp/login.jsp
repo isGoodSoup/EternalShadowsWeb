@@ -6,7 +6,8 @@
 	    <link rel="stylesheet" href="./style.css">
 	</head>
 	<body>
-		<img src="logo_v2.jpeg" alt="EternalShadows" class="logo">
+		<img src="logo_v3.png" alt="EternalShadows" class="logo">
+		<br>
 	    <form action="http://localhost:8084/EternalShadowsWeb/login" method="post">
 	        <input type="text" id="username" name="username" placeholder="Usuario" required>
 	        <br>
