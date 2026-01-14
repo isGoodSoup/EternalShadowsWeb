@@ -1,6 +1,8 @@
 package es.eternalshadow.service;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 
@@ -158,9 +160,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	    Usuario usuario = new Usuario();
 	    usuario.setEmail(dto.getEmail());
 	    usuario.setUsername(dto.getUsername());
-	    usuario.setPassword(context.getUtil().getPasswordUtil().hashPassword(dto.getPassword()));
+	    usuario.setPassword(
+	        context.getUtil().getPasswordUtil().hashPassword(dto.getPassword())
+	    );
 	    usuario.setRol(RolUsuario.JUGADOR);
 	    usuario.setActivo(true);
+	    usuario.setFechaAlta(Date.valueOf(LocalDate.now()));
 
 	    usuarioDAO.guardar(usuario);
 	}
