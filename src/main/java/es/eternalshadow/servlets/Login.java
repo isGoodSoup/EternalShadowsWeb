@@ -37,6 +37,8 @@ public class Login extends HttpServlet {
 
 			if(loginService.isAdmin(usuario)) {
 				log.info("Administrador {} ha iniciado sesión correctamente.", username);
+				
+				
 			} else {
 				log.info("No puede iniciar sesión el usuario {}: no es administrador.", username);
 			}

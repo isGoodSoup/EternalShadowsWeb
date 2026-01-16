@@ -7,8 +7,8 @@
 		<!-- Conexión JDBC -->
 		<property name="hibernate.connection.driver_class">oracle.jdbc.OracleDriver</property>
 		<property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521/XEPDB1</property>
-		<property name="hibernate.connection.username">HR</property>
-		<property name="hibernate.connection.password">HR</property>
+		<property name="hibernate.connection.username">getafe</property>
+		<property name="hibernate.connection.password">password</property>
 
 		<!-- Dialecto de Hibernate -->
 		<property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
