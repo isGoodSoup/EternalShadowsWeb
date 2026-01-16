@@ -13,10 +13,10 @@ import es.eternalshadow.main.GameContext;
 
 public class HibernateUtil {
     private static GameContext context;
-    private static final SessionFactory sessionFactory = buildSessionFactory();
+    private static SessionFactory sessionFactory;
     private static final Logger log = LoggerFactory.getLogger(HibernateUtil.class);
 
-    private static SessionFactory buildSessionFactory() {
+    static {
         try {
             Configuration configuration = new Configuration();
             configuration.configure("hibernate.cfg.xml");
@@ -31,7 +31,8 @@ public class HibernateUtil {
             configuration.addAnnotatedClass(es.eternalshadow.entities.Arma.class);
             configuration.addAnnotatedClass(es.eternalshadow.entities.Escudo.class);
             
-            return configuration.buildSessionFactory();
+            sessionFactory = configuration.buildSessionFactory();
+            log.info("SessionFactory creada exitosamente");
         } catch (Throwable ex) {
             log.error("Error al crear SessionFactory", ex);
             throw new ExceptionInInitializerError(ex);
@@ -49,20 +50,20 @@ public class HibernateUtil {
     public static void shutdown() {
         if (sessionFactory != null && !sessionFactory.isClosed()) {
             sessionFactory.close();
+            log.info("SessionFactory cerrada");
         }
     }
     
-    /**
-     * Establece el contexto del juego.
-     */
     public static void setContext(GameContext gameContext) {
         context = gameContext;
     }
     
-    /**
-     * Crea un usuario admin si no existe.
-     */
     public static void comprobarRolAdmin() {
+        if (context == null) {
+            log.warn("Contexto no inicializado, saltando creación de admin");
+            return;
+        }
+        
         try (Session session = getSession()) {
             Transaction tx = session.beginTransaction();
 
@@ -85,18 +86,16 @@ public class HibernateUtil {
 
                 session.persist(nuevoAdmin);
                 log.info("Usuario ADMIN creado con éxito.");
+            } else {
+                log.info("Usuario ADMIN ya existe.");
             }
 
             tx.commit();
-            log.info("Verificación de admin completada.");
         } catch (Exception e) {
             log.error("Error al verificar/crear admin", e);
         }
     }
     
-    /**
-     * Guarda una entidad en la base de datos.
-     */
     public static void save(Object entity) {
         try (Session session = getSession()) {
             Transaction tx = session.beginTransaction();
@@ -107,9 +106,6 @@ public class HibernateUtil {
         }
     }
     
-    /**
-     * Actualiza una entidad en la base de datos.
-     */
     public static void update(Object entity) {
         try (Session session = getSession()) {
             Transaction tx = session.beginTransaction();
@@ -117,6 +113,15 @@ public class HibernateUtil {
             tx.commit();
         } catch (Exception e) {
             log.error("Error al actualizar entidad", e);
+        }
+    }
+    
+    public static <T> T getById(Class<T> clazz, Object id) {
+        try (Session session = getSession()) {
+            return session.get(clazz, id);
+        } catch (Exception e) {
+            log.error("Error al obtener entidad por ID", e);
+            return null;
         }
     }
 }
