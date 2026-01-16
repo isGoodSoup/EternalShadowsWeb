@@ -61,4 +61,24 @@ public class UsuarioDAOImpl implements UsuarioDAO {
             return List.of();
         }
     }
+    
+   public boolean esAdmin(String username, String password) {
+		try (var session = HibernateUtil.getSession()) {
+			Long count = session.createQuery(
+				"SELECT COUNT(u) FROM Usuario u WHERE u.username = :username AND u.password = :password AND u.rol = 'ADMIN'", 
+				Long.class)
+				.setParameter("username", username)
+				.setParameter("password", password)
+				.uniqueResult();
+			return count != null && count > 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+
+
+
 }

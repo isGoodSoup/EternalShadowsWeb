@@ -57,6 +57,11 @@ public class Usuario {
         this.fechaAlta = fechaAlta;
         this.activo = activo;
     }
+    
+    public Usuario(String username, String password) {
+		this.username = username;
+		this.password = password;
+	}
 
     public int getId() {
         return id;
