@@ -1,128 +1,142 @@
 package es.eternalshadow.dto;
 
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import es.eternalshadow.entities.Arma;
-import es.eternalshadow.entities.Escudo;
-
+/**
+ * DTO para transferencia de datos de jugadores.
+ */
 public class JugadorDTO {
-	private Long id;
-	private String nombre;
-	private String tipo;
-	private int nivel;
-	private int puntosVida;
-	private int moral;
-	private List<Arma> armas;
-	private List<Escudo> escudos;
-	private Map<String, ItemDTO> inventario;
+    private Long id;
+    private String nombre;
+    private String tipo;
+    private int nivel;
+    private int puntosVida;
+    private int moral;
+    private int ataque;
+    private int defensa;
+    private int fuerza;
+    private int resistencia;
+    private int velocidad;
+    private int magia;
+    private Map<String, ItemDTO> inventario;
+    
+    public JugadorDTO() {
+    }
+    
+    public JugadorDTO(String nombre, String tipo, int nivel, int puntosVida, int moral) {
+        this.nombre = nombre;
+        this.tipo = tipo;
+        this.nivel = nivel;
+        this.puntosVida = puntosVida;
+        this.moral = moral;
+    }
 
-	public JugadorDTO() {}
+    public Long getId() {
+        return id;
+    }
 
-	public JugadorDTO(String nombre, String tipo, int nivel, int puntosVida, int moral, 
-			List<Arma> armas, List<Escudo> escudos) {
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.nivel = nivel;
-		this.puntosVida = puntosVida;
-		this.moral = moral;
-		this.armas = armas;
-		this.escudos = escudos;
-		setInventario(inventario);
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public JugadorDTO(String nombre, String tipo, int nivel, int puntosVida, int moral) {
-		super();
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.nivel = nivel;
-		this.puntosVida = puntosVida;
-		this.moral = moral;
-		setInventario(inventario);
-	}
-	
-	public JugadorDTO(String nombre, String tipo, int nivel, int puntosVida, int moral, 
-            List<Arma> armas, List<Escudo> escudos, Map<String, ItemDTO> inventario) {
-		this.nombre = nombre;
-		this.tipo = tipo;
-		this.nivel = nivel;
-		this.puntosVida = puntosVida;
-		this.moral = moral;
-		this.armas = armas;
-		this.escudos = escudos;
-		this.inventario = inventario != null ? inventario : new HashMap<>();
-	}
-	
-	public Long getId() {
-		return id;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getTipo() {
+        return tipo;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
-	public String getTipo() {
-		return tipo;
-	}
+    public int getNivel() {
+        return nivel;
+    }
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
 
-	public int getNivel() {
-		return nivel;
-	}
+    public int getPuntosVida() {
+        return puntosVida;
+    }
 
-	public void setNivel(int nivel) {
-		this.nivel = nivel;
-	}
+    public void setPuntosVida(int puntosVida) {
+        this.puntosVida = puntosVida;
+    }
 
-	public int getPuntosVida() {
-		return puntosVida;
-	}
+    public int getMoral() {
+        return moral;
+    }
 
-	public void setPuntosVida(int puntosVida) {
-		this.puntosVida = puntosVida;
-	}
+    public void setMoral(int moral) {
+        this.moral = moral;
+    }
 
-	public int getMoral() {
-		return moral;
-	}
+    public int getAtaque() {
+        return ataque;
+    }
 
-	public void setMoral(int moral) {
-		this.moral = moral;
-	}
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
 
-	public List<Arma> getArmas() {
-		return armas;
-	}
+    public int getDefensa() {
+        return defensa;
+    }
 
-	public void setArmas(List<Arma> armas) {
-		this.armas = armas;
-	}
+    public void setDefensa(int defensa) {
+        this.defensa = defensa;
+    }
 
-	public List<Escudo> getEscudos() {
-		return escudos;
-	}
+    public int getFuerza() {
+        return fuerza;
+    }
 
-	public void setEscudos(List<Escudo> escudos) {
-		this.escudos = escudos;
-	}
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
 
-	public Map<String, ItemDTO> getInventario() {
-		return inventario;
-	}
+    public int getResistencia() {
+        return resistencia;
+    }
 
-	public void setInventario(Map<String, ItemDTO> inventario) {
-	    this.inventario = inventario != null ? inventario : new HashMap<>();
-	}
+    public void setResistencia(int resistencia) {
+        this.resistencia = resistencia;
+    }
+
+    public int getVelocidad() {
+        return velocidad;
+    }
+
+    public void setVelocidad(int velocidad) {
+        this.velocidad = velocidad;
+    }
+
+    public int getMagia() {
+        return magia;
+    }
+
+    public void setMagia(int magia) {
+        this.magia = magia;
+    }
+
+    public Map<String, ItemDTO> getInventario() {
+        return inventario;
+    }
+
+    public void setInventario(Map<String, ItemDTO> inventario) {
+        this.inventario = inventario;
+    }
+    
+    @Override
+    public String toString() {
+        return nombre + " [" + tipo + "] Nvl " + nivel + " - PV: " + puntosVida + "/100";
+    }
 }
