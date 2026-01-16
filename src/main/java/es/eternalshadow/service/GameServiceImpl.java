@@ -3,7 +3,7 @@ package es.eternalshadow.service;
 import es.eternalshadow.main.GameContext;
 import es.eternalshadow.service.interfaces.GameManagerService;
 
-public class GameManagerServiceImpl implements GameManagerService {
+public class GameServiceImpl implements GameManagerService {
     private GameContext context;
     private boolean partidaEnCurso;
     private boolean partidaPausada;
@@ -11,7 +11,7 @@ public class GameManagerServiceImpl implements GameManagerService {
     private int tiempoJugado; // en segundos
     private long inicioPartida;
     
-    public GameManagerServiceImpl(GameContext context) {
+    public GameServiceImpl(GameContext context) {
         this.context = context;
         this.partidaEnCurso = false;
         this.partidaPausada = false;
