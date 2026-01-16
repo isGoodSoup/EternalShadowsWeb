@@ -1,133 +1,203 @@
 package es.eternalshadow.service;
 
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import es.eternalshadow.enums.Dificultad;
-import es.eternalshadow.enums.Menu;
-import es.eternalshadow.enums.MenuOpciones;
-import es.eternalshadow.exception.GameException;
 import es.eternalshadow.main.GameContext;
 import es.eternalshadow.service.interfaces.MenuService;
+import es.eternalshadow.util.InputHandler;
 
 public class MenuServiceImpl implements MenuService {
     private GameContext context;
-    private static final Logger log = LoggerFactory.getLogger(MenuServiceImpl.class);
-
+    private boolean enMenuPrincipal;
+    
     public MenuServiceImpl(GameContext context) {
-        super();
         this.context = context;
+        this.enMenuPrincipal = true;
     }
     
-    public GameContext getContext() {
-		return context;
-	}
-
-	public void setContext(GameContext context) {
-		this.context = context;
-	}
-
-	/**
-     * Procesa el menu principal y lo desglosa en 4 partes
-     */
-	@Override
-    public void menuPrincipal(List<String> credenciales)
-            throws IOException, InterruptedException, GameException {
-        boolean salir = false;
-
-        String[] opciones = Arrays.stream(Menu.values())
-                .map(Menu::getTexto)
-                .toArray(String[]::new);
-
-        while (!salir) {
-            pintarLogo("./docs/logo.txt");
-            int opcion = context.getUtil().getInputHandler().crearMenu(context.getReader(), opciones, "Introduce tu opción");
-            Menu menuSeleccionado = Menu.fromCodigo(opcion);
-
-            salir = opcionesMenu(menuSeleccionado);
-        }
-    }
-	
-	@Override
-	public boolean opcionesMenu(Menu menu) throws GameException, InterruptedException {
-        if (menu == null) return false;
-
-        switch (menu) {
-            case COMENZAR -> context.getServices().getGameService().iniciarPartida();
-            case OPCIONES -> menuOpciones();
-            case SALIR -> {
-                log.debug("Salida");
-                return true;
+    @Override
+    public void mostrarMenuPrincipal() {
+        enMenuPrincipal = true;
+        
+        while (enMenuPrincipal) {
+            mostrarPantalla("MENÚ PRINCIPAL");
+            
+            System.out.println("1) Nueva partida");
+            System.out.println("2) Cargar partida");
+            System.out.println("3) Opciones");
+            System.out.println("4) Ayuda");
+            System.out.println("5) Salir");
+            System.out.println("====================");
+            
+            if (context.getServices().getAuthService().isAutenticado()) {
+                System.out.println("Usuario: " + context.getServices().getAuthService().getUsuarioActual().getUsername());
+            } else {
+                System.out.println("No autenticado - [L]ogin | [R]egistro");
             }
-            case DEBUG -> modoDebug();
-        }
-        return false;
-    }
-	
-	@Override
-	public void menuOpciones() throws GameException, InterruptedException {
-        boolean volver = false;
-
-        String[] opciones = Arrays.stream(MenuOpciones.values())
-                .map(MenuOpciones::getTexto)
-                .toArray(String[]::new);
-
-        while (!volver) {
-            int opcion = context.getUtil().getInputHandler().crearMenu(context.getReader(), opciones, "Opciones");
-            MenuOpciones seleccion = MenuOpciones.fromCodigo(opcion);
-
-            volver = menuOpciones(seleccion);
+            
+            String opcion = context.getReader().readLine("Opción: ").trim();
+            
+            procesarOpcionPrincipal(opcion);
         }
     }
-	
-	@Override
-	public boolean menuOpciones(MenuOpciones menu) throws GameException {
-        if (menu == null) return false;
-
-        switch (menu) {
-            case DIFICULTAD -> {
-                Dificultad nueva = Dificultad.NORMAL;
-                log.debug("Dificultad seleccionada: " + nueva);
+    
+    @Override
+    public void mostrarMenuPausa() {
+        mostrarPantalla("JUEGO EN PAUSA");
+        
+        System.out.println("1) Reanudar juego");
+        System.out.println("2) Guardar partida");
+        System.out.println("3) Cargar partida");
+        System.out.println("4) Opciones");
+        System.out.println("5) Volver al menú principal");
+        System.out.println("====================");
+        
+        String opcion = context.getReader().readLine("Opción: ").trim();
+        procesarOpcionPausa(opcion);
+    }
+    
+    @Override
+    public boolean procesarOpcion(int opcion) {
+        // Método genérico para procesar opciones numéricas
+        try {
+            int numOpcion = Integer.parseInt(String.valueOf(opcion));
+            return procesarOpcionNumerica(numOpcion);
+        } catch (NumberFormatException e) {
+            return procesarOpcionTexto(String.valueOf(opcion));
+        }
+    }
+    
+    private boolean procesarOpcionNumerica(int opcion) {
+        switch (opcion) {
+            case 1: // Nueva partida
+                context.getServices().getGameManagerService().nuevaPartida();
+                return false; // Sale del menú
+            case 5: // Salir
+                enMenuPrincipal = false;
+                return true; // Vuelve
+            default:
+                System.out.println("Opción no implementada aún");
+                return false;
+        }
+    }
+    
+    private boolean procesarOpcionTexto(String opcion) {
+        opcion = opcion.toLowerCase();
+        
+        switch (opcion) {
+            case "l":
+            case "login":
+                gestionarLogin();
+                return false;
+            case "r":
+            case "registro":
+                gestionarRegistro();
+                return false;
+            case "q":
+            case "quit":
+            case "exit":
+                enMenuPrincipal = false;
                 return true;
-            }
-            case STATS -> verStats();
-            case VOLVER -> {
-                return true;
+            default:
+                System.out.println("Opción no válida");
+                return false;
+        }
+    }
+    
+    @Override
+    public void mostrarPantalla(String titulo) {
+        System.out.println("\n".repeat(3));
+        System.out.println("=".repeat(50));
+        System.out.println(" ".repeat((50 - titulo.length()) / 2) + titulo);
+        System.out.println("=".repeat(50));
+        System.out.println();
+    }
+    
+    private void procesarOpcionPrincipal(String opcion) {
+        if (opcion.equalsIgnoreCase("l") || opcion.equalsIgnoreCase("login")) {
+            gestionarLogin();
+        } else if (opcion.equalsIgnoreCase("r") || opcion.equalsIgnoreCase("registro")) {
+            gestionarRegistro();
+        } else {
+            try {
+                int numOpcion = Integer.parseInt(opcion);
+                switch (numOpcion) {
+                    case 1:
+                        context.getServices().getGameManagerService().nuevaPartida();
+                        enMenuPrincipal = false;
+                        break;
+                    case 2:
+                        context.getServices().getGameManagerService().cargarPartida(1); // ID dummy
+                        break;
+                    case 3:
+                        context.getServices().getGameUIService().mostrarMenuOpciones();
+                        break;
+                    case 4:
+                        context.getServices().getGameUIService().mostrarAyuda();
+                        break;
+                    case 5:
+                        System.out.println("¡Hasta pronto!");
+                        System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Opción no válida");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Entrada no válida");
             }
         }
-        return false;
     }
-	
-	@Override
-	public void modoDebug() {
-        log.debug("Dev mode");
-        context.getHistoria().iniciar(context.getUtil().getCharacterFactory().crearPersonaje(), context.getReader(), context.getUtil());
+    
+    private void procesarOpcionPausa(String opcion) {
+        try {
+            int numOpcion = Integer.parseInt(opcion);
+            switch (numOpcion) {
+                case 1:
+                    System.out.println("Reanudando juego...");
+                    break;
+                case 2:
+                    context.getServices().getGameManagerService().guardarPartida();
+                    break;
+                case 3:
+                    context.getServices().getGameManagerService().cargarPartida(1);
+                    break;
+                case 4:
+                    context.getServices().getGameUIService().mostrarMenuOpciones();
+                    break;
+                case 5:
+                    enMenuPrincipal = true;
+                    break;
+                default:
+                    System.out.println("Opción no válida");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Entrada no válida");
+        }
     }
-	
-	@Override
-	public void verStats() {
-        // TODO Stats
+    
+    private void gestionarLogin() {
+        if (context.getServices().getAuthService().isAutenticado()) {
+            System.out.println("Ya hay una sesión activa");
+            return;
+        }
+        
+        try {
+            String username = InputHandler.toScan(context.getReader(), "Usuario o Email");
+            String password = InputHandler.toScan(context.getReader(), "Contraseña");
+            
+            context.getServices().getAuthService().login(username, password);
+        } catch (Exception e) {
+            System.out.println("Error en login: " + e.getMessage());
+        }
     }
-
-    /**
-	 * Imprime un logo desde archivo, línea por línea.
-	 */
-	@Override
-	public void pintarLogo(String ruta)
-			throws IOException, InterruptedException {
-		System.out.println();
-		try {
-			for (String linea : context.getUtil().getFileManager().toLeerArchivo(ruta)) {
-				System.out.println(linea);
-				Thread.sleep(50);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		System.out.println();
-	}
+    
+    private void gestionarRegistro() {
+        try {
+            String username = InputHandler.toScan(context.getReader(), "Nombre de usuario");
+            String email = InputHandler.toScan(context.getReader(), "Email");
+            String password = InputHandler.toScan(context.getReader(), "Contraseña");
+            
+            context.getServices().getAuthService().registrar(username, email, password);
+        } catch (Exception e) {
+            System.out.println("Error en registro: " + e.getMessage());
+        }
+    }
 }

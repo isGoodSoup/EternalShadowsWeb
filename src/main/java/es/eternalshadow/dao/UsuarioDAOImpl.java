@@ -60,9 +60,9 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	}
 
 	@Override
-	public Usuario obtenerPorId(Long id) {
+	public Usuario obtenerPorId(int i) {
 		try (Session session = HibernateUtil.getSessionFactory()) {
-			return session.get(Usuario.class, id);
+			return session.get(Usuario.class, i);
 		}
 	}
 
