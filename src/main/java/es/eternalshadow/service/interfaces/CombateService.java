@@ -7,9 +7,47 @@ import es.eternalshadow.entities.Enemigo;
 import es.eternalshadow.entities.Jugador;
 import es.eternalshadow.exception.LimiteCombateException;
 
+/**
+ * Servicio para gestionar combates.
+ */
 public interface CombateService {
-	void iniciarCombate(List<Criatura> jugadores, List<Criatura> enemigos) throws LimiteCombateException;
-	void luchar(Jugador jugador, Enemigo enemigo);
-	boolean huir(Jugador jugador);
-	int calcularCritico(int base);
+    
+    /**
+     * Inicia un combate entre jugadores y enemigos.
+     */
+    void iniciarCombate(List<Criatura> jugadores, List<Criatura> enemigos) throws LimiteCombateException;
+    
+    /**
+     * Realiza un ataque de un jugador a un enemigo.
+     */
+    void atacar(Jugador atacante, Enemigo objetivo);
+    
+    /**
+     * Intenta huir del combate.
+     * @return true si tiene éxito, false si falla.
+     */
+    boolean intentarHuir(Jugador jugador);
+    
+    /**
+     * Usa una habilidad especial en combate.
+     */
+    void usarHabilidad(Jugador jugador, String habilidad, Enemigo objetivo);
+    
+    /**
+     * Calcula daño crítico.
+     * @param dañoBase Daño base del ataque.
+     * @return Daño con crítico aplicado.
+     */
+    int calcularDañoCritico(int dañoBase);
+    
+    /**
+     * Verifica si el combate ha terminado.
+     */
+    boolean isCombateTerminado();
+    
+    /**
+     * Obtiene el ganador del combate.
+     * @return "JUGADORES", "ENEMIGOS" o null si sigue en curso.
+     */
+    String getGanador();
 }

@@ -1,18 +1,37 @@
 package es.eternalshadow.service.interfaces;
 
-import java.io.IOException;
-import java.util.List;
-
-import es.eternalshadow.enums.Menu;
-import es.eternalshadow.enums.MenuOpciones;
-import es.eternalshadow.exception.GameException;
-
+/**
+ * Servicio para mostrar menús y gestionar navegación.
+ */
 public interface MenuService {
-	void menuPrincipal(List<String> credenciales) throws IOException, InterruptedException, GameException;
-	boolean opcionesMenu(Menu menu) throws GameException, InterruptedException;
-	void menuOpciones() throws GameException, InterruptedException;
-	boolean menuOpciones(MenuOpciones menu) throws GameException;
-	void modoDebug();
-	void verStats();
-	void pintarLogo(String ruta) throws IOException, InterruptedException;
+    
+    /**
+     * Muestra el menú principal y gestiona la navegación.
+     */
+    void mostrarMenuPrincipal();
+    
+    /**
+     * Muestra el menú de opciones/configuración.
+     */
+    void mostrarMenuOpciones();
+    
+    /**
+     * Muestra el menú de personaje.
+     */
+    void mostrarMenuPersonaje();
+    
+    /**
+     * Muestra el menú de inventario.
+     */
+    void mostrarMenuInventario();
+    
+    /**
+     * Muestra estadísticas del jugador.
+     */
+    void mostrarStats();
+    
+    /**
+     * Muestra información de ayuda.
+     */
+    void mostrarAyuda();
 }
