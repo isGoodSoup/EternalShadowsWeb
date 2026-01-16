@@ -1,9 +1,11 @@
 package es.eternalshadow.util;
 
+import es.eternalshadow.main.GameContext;
+
 public class UtilHub {
     private final InputHandler inputHandler;
     private final PasswordUtil passwordUtil;
-    private final CharacterFactory characterFactory;
+    private CharacterFactory characterFactory;
     private final ExceptionsHandler exceptionsHandler;
     private final FileManager fileManager;
     private final ConsolePrinter consolePrinter;
@@ -21,8 +23,8 @@ public class UtilHub {
      * Inicializa el CharacterFactory con el contexto del juego.
      * @param context Contexto del juego.
      */
-    public void initializeCharacterFactory(es.eternalshadow.main.GameContext context) {
-        this.characterFactory = new CharacterFactory(context);
+    public void initializeCharacterFactory(GameContext context) {
+        this.characterFactory = new CharacterFactory();
     }
 
     public InputHandler getInputHandler() {
