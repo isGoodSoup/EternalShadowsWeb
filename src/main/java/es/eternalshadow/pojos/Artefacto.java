@@ -6,8 +6,13 @@ import es.eternalshadow.enums.Reliquias;
 public class Artefacto extends ItemDTO {
 	private Reliquias artefacto;
 
-	public Artefacto(String nombre, int cantidad, Reliquias artefacto) {
-		super(nombre, cantidad);
+	public Artefacto() {
+		super();
+	}
+	
+	public Artefacto(String nombre, int cantidad, String tipo, 
+			String descripcion, int valor, Reliquias artefacto) {
+		super(nombre, cantidad, tipo, descripcion, valor);
 		this.artefacto = artefacto;
 	}
 

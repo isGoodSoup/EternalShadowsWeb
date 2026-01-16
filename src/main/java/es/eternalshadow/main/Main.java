@@ -1,6 +1,6 @@
-package es.eternalshadow;
+package es.eternalshadow.main;
 
-import es.eternalshadow.main.GameContext;
+
 
 public class Main {
     public static void main(String[] args) {

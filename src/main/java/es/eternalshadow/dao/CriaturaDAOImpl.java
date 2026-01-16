@@ -2,74 +2,42 @@ package es.eternalshadow.dao;
 
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
 import es.eternalshadow.dao.interfaces.CriaturaDAO;
 import es.eternalshadow.entities.Criatura;
-import es.eternalshadow.util.HibernateUtil;
+
 
 public class CriaturaDAOImpl implements CriaturaDAO {
 
 	@Override
-	public void guardar(Object criatura) {
-		Transaction tx = null;
-		try (Session session = HibernateUtil.getSessionFactory()) {
-			tx = session.beginTransaction();
-			session.persist(criatura);
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-			throw e;
-		}
+	public void guardar(Object obj) {
+		// TODO Auto-generated method stub
+		
 	}
-	
+
 	@Override
 	public void eliminar(Long id) {
-		Transaction tx = null;
-		try (Session session = HibernateUtil.getSessionFactory()) {
-			tx = session.beginTransaction();
-			Criatura criatura = session.get(Criatura.class, id);
-			if (criatura != null) {
-				session.remove(criatura);
-			}
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-			throw e;
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void actualizar(Object criatura) {
-		Transaction tx = null;
-		try (Session session = HibernateUtil.getSessionFactory()) {
-			tx = session.beginTransaction();
-			session.merge(criatura);
-			tx.commit();
-		} catch (Exception e) {
-			if (tx != null) {
-				tx.rollback();
-			}
-			throw e;
-		}
+	public void actualizar(Object obj) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public Criatura obtenerPorId(Long id) {
-		try (Session session = HibernateUtil.getSessionFactory()) {
-			return session.get(Criatura.class, id);
-		}
+	public Object obtenerPorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public List<Criatura> obtenerTodasLasCriaturas() {
-		try (Session session = HibernateUtil.getSessionFactory()) {
-			return session.createQuery("from Criatura", Criatura.class).list();
-		}
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	
 }
