@@ -1,75 +1,38 @@
 package es.eternalshadow.service;
 
 import es.eternalshadow.main.GameContext;
+import es.eternalshadow.service.interfaces.*;
 
 public class ServiceFactory {
-	private GameContext context;
-	private final UsuarioServiceImpl userService;
-	private final JugadorServiceImpl jugadorService;
-    private final MenuServiceImpl menuService;
-    private final EULAServiceImpl eulaService;
-    private final GameServiceImpl gameService;
-    private final CombateServiceImpl combateService;
-    private CapitulosLoaderImpl capitulosLoader;
-	
-    public ServiceFactory() {
-		super();
-		this.userService = new UsuarioServiceImpl(null);
-        this.menuService = new MenuServiceImpl(null);
-        this.eulaService = new EULAServiceImpl("docs/eula.txt");
-        this.gameService = new GameServiceImpl(null);
-        this.combateService = new CombateServiceImpl(null);
-		this.capitulosLoader = new CapitulosLoaderImpl(null);
-		this.jugadorService = new JugadorServiceImpl(null);
-	}
+    private GameContext context;
+    private AuthServiceImpl authService;
+    private JugadorServiceImpl jugadorService;
+    private MenuServiceImpl menuService;
+    private GameManagerServiceImpl gameManagerService;
+    private CombateServiceImpl combateService;
+    private GameUIServiceImpl gameUIService;
     
-    public void init(GameContext context) {
-        this.context = context;	
-        this.userService.setContext(context);
-        this.jugadorService.setContext(context);
-        this.menuService.setContext(context);
-        this.gameService.setContext(context);
-        this.combateService.setContext(context);
-        this.capitulosLoader = new CapitulosLoaderImpl(context);
+    public ServiceFactory(GameContext context) {
+        this.context = context;
+        initializeServices();
     }
     
-    public GameContext getContext() {
-		return context;
-	}
-
-	public void setContext(GameContext context) {
-		this.context = context;
-	}
-    
-    public UsuarioServiceImpl getUserService() {
-        return userService;
+    private void initializeServices() {
+        this.authService = new AuthServiceImpl(context);
+        this.jugadorService = new JugadorServiceImpl(context);
+        this.menuService = new MenuServiceImpl(context);
+        this.gameManagerService = new GameManagerServiceImpl(context);
+        this.combateService = new CombateServiceImpl(context);
+        this.gameUIService = new GameUIServiceImpl(context);
     }
     
-    public JugadorServiceImpl getJugadorService() {
-		return jugadorService;
-	}
-
-	public MenuServiceImpl getMenuService() {
-        return menuService;
-    }
-
-    public EULAServiceImpl getEulaService() {
-        return eulaService;
-    }
-
-    public GameServiceImpl getGameService() {
-        return gameService;
-    }
+    // Getters para cada servicio
+    public AuthService getAuthService() { return authService; }
+    public JugadorService getJugadorService() { return jugadorService; }
+    public MenuService getMenuService() { return menuService; }
+    public GameManagerService getGameManagerService() { return gameManagerService; }
+    public CombateService getCombateService() { return combateService; }
+    public GameUIService getGameUIService() { return gameUIService; }
     
-	public CombateServiceImpl getCombateService() {
-		return combateService;
-	}
-	
-	public CapitulosLoaderImpl getCapitulosLoader() {
-		return capitulosLoader;
-	}
-
-	public void setCapitulosLoader(CapitulosLoaderImpl capitulosLoader) {
-		this.capitulosLoader = capitulosLoader;
-	}
+    public GameContext getContext() { return context; }
 }

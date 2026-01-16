@@ -20,6 +20,11 @@ public interface JugadorService {
     Jugador getJugadorPrincipal();
     
     /**
+     * Establece el jugador principal.
+     */
+    void setJugadorPrincipal(Jugador jugador);
+    
+    /**
      * Obtiene todos los jugadores creados.
      */
     List<Jugador> getTodosJugadores();
@@ -30,6 +35,11 @@ public interface JugadorService {
     void guardarJugador(Jugador jugador);
     
     /**
+     * Actualiza un jugador existente.
+     */
+    void actualizarJugador(Jugador jugador);
+    
+    /**
      * Carga un jugador desde base de datos.
      */
     Jugador cargarJugador(int id);
@@ -38,4 +48,29 @@ public interface JugadorService {
      * Elimina un jugador.
      */
     void eliminarJugador(int id);
+    
+    /**
+     * Sube de nivel al jugador.
+     */
+    void subirNivel(Jugador jugador);
+    
+    /**
+     * Aplica experiencia al jugador.
+     */
+    void aplicarExperiencia(Jugador jugador, int experiencia);
+    
+    /**
+     * Cura al jugador (restaura puntos de vida).
+     */
+    void curarJugador(Jugador jugador, int puntosCuracion);
+    
+    /**
+     * Añade un item al inventario del jugador.
+     */
+    void añadirItem(Jugador jugador, String item, int cantidad);
+    
+    /**
+     * Quita un item del inventario del jugador.
+     */
+    void quitarItem(Jugador jugador, String item, int cantidad);
 }

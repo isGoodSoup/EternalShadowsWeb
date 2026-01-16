@@ -14,8 +14,12 @@ public interface CombateService {
     
     /**
      * Inicia un combate entre jugadores y enemigos.
+     * @param jugadores Lista de jugadores participantes.
+     * @param enemigos Lista de enemigos participantes.
+     * @param esObligatorio true si no se puede huir del combate.
      */
-    void iniciarCombate(List<Criatura> jugadores, List<Criatura> enemigos) throws LimiteCombateException;
+    void iniciarCombate(List<Criatura> jugadores, List<Criatura> enemigos, boolean esObligatorio) 
+            throws LimiteCombateException;
     
     /**
      * Realiza un ataque de un jugador a un enemigo.
@@ -34,6 +38,11 @@ public interface CombateService {
     void usarHabilidad(Jugador jugador, String habilidad, Enemigo objetivo);
     
     /**
+     * Usa un item en combate (poción, etc.).
+     */
+    void usarItem(Jugador jugador, String item);
+    
+    /**
      * Calcula daño crítico.
      * @param dañoBase Daño base del ataque.
      * @return Daño con crítico aplicado.
@@ -50,4 +59,14 @@ public interface CombateService {
      * @return "JUGADORES", "ENEMIGOS" o null si sigue en curso.
      */
     String getGanador();
+    
+    /**
+     * Obtiene experiencia otorgada por derrotar enemigos.
+     */
+    int getExperienciaGanada();
+    
+    /**
+     * Obtiene botín obtenido en el combate.
+     */
+    List<String> getBotinObtenido();
 }

@@ -1,7 +1,7 @@
 package es.eternalshadow.service.interfaces;
 
 /**
- * Servicio para mostrar menús y gestionar navegación.
+ * Servicio principal para mostrar menús.
  */
 public interface MenuService {
     
@@ -11,27 +11,19 @@ public interface MenuService {
     void mostrarMenuPrincipal();
     
     /**
-     * Muestra el menú de opciones/configuración.
+     * Muestra el menú de pausa durante el juego.
      */
-    void mostrarMenuOpciones();
+    void mostrarMenuPausa();
     
     /**
-     * Muestra el menú de personaje.
+     * Procesa la opción seleccionada en un menú.
+     * @param opcion Opción seleccionada (1, 2, 3...).
+     * @return true si debe volver al menú anterior, false si continuar.
      */
-    void mostrarMenuPersonaje();
+    boolean procesarOpcion(int opcion);
     
     /**
-     * Muestra el menú de inventario.
+     * Limpia la pantalla y muestra un título.
      */
-    void mostrarMenuInventario();
-    
-    /**
-     * Muestra estadísticas del jugador.
-     */
-    void mostrarStats();
-    
-    /**
-     * Muestra información de ayuda.
-     */
-    void mostrarAyuda();
+    void mostrarPantalla(String titulo);
 }

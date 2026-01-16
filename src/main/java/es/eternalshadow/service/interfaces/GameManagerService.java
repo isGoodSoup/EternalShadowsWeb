@@ -31,8 +31,18 @@ public interface GameManagerService {
     void terminarPartida();
     
     /**
+     * Pausa la partida actual.
+     */
+    void pausarPartida();
+    
+    /**
+     * Retorna una partida pausada.
+     */
+    void retomarPartida();
+    
+    /**
      * Obtiene el estado actual del juego.
-     * @return "MENU", "EN_COMBATE", "EN_HISTORIA", etc.
+     * @return "MENU", "EN_COMBATE", "EN_HISTORIA", "PAUSADO", etc.
      */
     String getEstadoJuego();
     
@@ -40,4 +50,14 @@ public interface GameManagerService {
      * Verifica si hay una partida en curso.
      */
     boolean isPartidaEnCurso();
+    
+    /**
+     * Obtiene el progreso actual de la partida (0-100%).
+     */
+    int getProgresoPartida();
+    
+    /**
+     * Obtiene el tiempo transcurrido en la partida (en minutos).
+     */
+    int getTiempoJugado();
 }
