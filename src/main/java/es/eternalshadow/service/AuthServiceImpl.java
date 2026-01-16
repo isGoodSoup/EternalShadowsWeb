@@ -33,10 +33,7 @@ public class AuthServiceImpl implements AuthService {
             throw new UsuarioException("La contraseña debe tener al menos 6 caracteres");
         }
         
-        // Verificar si ya existe
-        if (usuarioDAO.isExisteEmail(email)) {
-            throw new UsuarioException("El email ya está registrado");
-        }
+      
         
         // Crear usuario
         Usuario usuario = new Usuario();
