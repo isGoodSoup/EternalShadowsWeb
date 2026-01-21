@@ -2,6 +2,7 @@ package es.eternalshadow.service;
 
 import es.eternalshadow.main.GameContext;
 import es.eternalshadow.service.interfaces.AuthService;
+import es.eternalshadow.service.interfaces.CapitulosLoaderService;
 import es.eternalshadow.service.interfaces.CombateService;
 import es.eternalshadow.service.interfaces.GameManagerService;
 import es.eternalshadow.service.interfaces.GameUIService;
@@ -22,6 +23,7 @@ public class ServiceFactory {
     private GameManagerService gameManagerService;
     private CombateService combateService;
     private GameUIService gameUIService;
+    private CapitulosLoaderService capitulosLoaderService;
     
     /**
      * Constructor principal.
@@ -106,6 +108,15 @@ public class ServiceFactory {
         return context;
     }
     
+    
+    //obtiene el capitulo loader service
+    public CapitulosLoaderService getCapitulosLoaderService() {
+        if (capitulosLoaderService == null) {
+            capitulosLoaderService = new CapitulosLoaderServiceImpl(context);
+        }
+        return capitulosLoaderService;
+    }
+
     /**
      * Inicializa todos los servicios de una vez (para pre-carga).
      */
@@ -176,4 +187,6 @@ public class ServiceFactory {
         
         System.out.println("✓ Servicios cerrados correctamente");
     }
+
+	
 }
