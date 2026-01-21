@@ -1,0 +1,191 @@
+18:31:44.724 [main] ERROR es.eternalshadow.util.HibernateUtil - Error al crear SessionFactory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver.connect() [ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=3x0wucFaQO2JKCFhWMJrbQ==)
+https://docs.oracle.com/error-help/db/ora-12541/] [ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=3x0wucFaQO2JKCFhWMJrbQ==)
+https://docs.oracle.com/error-help/db/ora-12541/] [n/a]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:949)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at es.eternalshadow.util.HibernateUtil.<clinit>(HibernateUtil.java:34)
+	at es.eternalshadow.main.GameContext.<init>(GameContext.java:45)
+	at es.eternalshadow.main.Main.main(Main.java:11)
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver.connect() [ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=3x0wucFaQO2JKCFhWMJrbQ==)
+https://docs.oracle.com/error-help/db/ora-12541/] [ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=3x0wucFaQO2JKCFhWMJrbQ==)
+https://docs.oracle.com/error-help/db/ora-12541/] [n/a]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:63)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:135)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:43)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:61)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:507)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:380)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:558)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:107)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:87)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:136)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:247)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:434)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:305)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	... 14 common frames omitted
+Caused by: java.sql.SQLException: ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=3x0wucFaQO2JKCFhWMJrbQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+	at oracle.jdbc.driver.T4CConnection.handleLogonNetException(T4CConnection.java:1853)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:1204)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1189)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:106)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:887)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:694)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:40)
+	... 30 common frames omitted
+Caused by: oracle.net.ns.NetException: ORA-12541: No se puede conectar. No hay ningún listener en host localhost port 1521. (CONNECTION_ID=3x0wucFaQO2JKCFhWMJrbQ==)
+https://docs.oracle.com/error-help/db/ora-12541/
+	at oracle.net.nt.TcpNTAdapter.handleEstablishSocketException(TcpNTAdapter.java:418)
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:350)
+	at oracle.net.nt.TcpNTAdapter.connect(TcpNTAdapter.java:228)
+	at oracle.net.nt.ConnOption.connect(ConnOption.java:346)
+	at oracle.net.nt.ConnStrategy.executeConnOption(ConnStrategy.java:1252)
+	at oracle.net.nt.ConnStrategy.execute(ConnStrategy.java:778)
+	at oracle.net.resolver.AddrResolution.resolveAndExecute(AddrResolution.java:718)
+	at oracle.net.ns.NSProtocol.establishConnection(NSProtocol.java:960)
+	at oracle.net.ns.NSProtocol.connect(NSProtocol.java:329)
+	at oracle.jdbc.driver.T4CConnection.connectNetworkSessionProtocol(T4CConnection.java:3684)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:1083)
+	... 35 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)
+	at java.base/sun.nio.ch.SocketChannelImpl.finishTimedConnect(SocketChannelImpl.java:1196)
+	at java.base/sun.nio.ch.SocketChannelImpl.blockingConnect(SocketChannelImpl.java:1238)
+	at java.base/sun.nio.ch.SocketAdaptor.connect(SocketAdaptor.java:102)
+	at oracle.net.nt.TimeoutSocketChannel.doConnect(TimeoutSocketChannel.java:291)
+	at oracle.net.nt.TimeoutSocketChannel.initializeSocketChannel(TimeoutSocketChannel.java:271)
+	at oracle.net.nt.TimeoutSocketChannel.connect(TimeoutSocketChannel.java:238)
+	at oracle.net.nt.TimeoutSocketChannel.<init>(TimeoutSocketChannel.java:205)
+	at oracle.net.nt.TcpNTAdapter.establishSocket(TcpNTAdapter.java:339)
+	... 44 common frames omitted
+18:33:36.060 [main] ERROR es.eternalshadow.util.HibernateUtil - Error al crear SessionFactory
+org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Error calling Driver.connect() [ORA-01109: database not open
+
+https://docs.oracle.com/error-help/db/ora-01109/] [ORA-01109: database not open
+
+https://docs.oracle.com/error-help/db/ora-01109/] [n/a]
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:226)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:194)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:949)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at es.eternalshadow.util.HibernateUtil.<clinit>(HibernateUtil.java:34)
+	at es.eternalshadow.main.GameContext.<init>(GameContext.java:45)
+	at es.eternalshadow.main.Main.main(Main.java:11)
+Caused by: org.hibernate.exception.GenericJDBCException: Error calling Driver.connect() [ORA-01109: database not open
+
+https://docs.oracle.com/error-help/db/ora-01109/] [ORA-01109: database not open
+
+https://docs.oracle.com/error-help/db/ora-01109/] [n/a]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:63)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.convertSqlException(BasicConnectionCreator.java:135)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:43)
+	at org.hibernate.engine.jdbc.connections.internal.BasicConnectionCreator.createConnection(BasicConnectionCreator.java:61)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.addConnections(DriverManagerConnectionProviderImpl.java:507)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections.<init>(DriverManagerConnectionProviderImpl.java:380)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl$PooledConnections$Builder.build(DriverManagerConnectionProviderImpl.java:558)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.buildPool(DriverManagerConnectionProviderImpl.java:107)
+	at org.hibernate.engine.jdbc.connections.internal.DriverManagerConnectionProviderImpl.configure(DriverManagerConnectionProviderImpl.java:87)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.configureService(StandardServiceRegistryImpl.java:136)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:247)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
+	at org.hibernate.service.ServiceRegistry.requireService(ServiceRegistry.java:68)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.buildJdbcConnectionAccess(JdbcEnvironmentInitiator.java:434)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:305)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:129)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:81)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	... 14 common frames omitted
+Caused by: java.sql.SQLException: ORA-01109: database not open
+
+https://docs.oracle.com/error-help/db/ora-01109/
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:715)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:610)
+	at oracle.jdbc.driver.T4CTTIoer11.processError(T4CTTIoer11.java:605)
+	at oracle.jdbc.driver.T4CTTIoauthenticate.processError(T4CTTIoauthenticate.java:932)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:969)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:237)
+	at oracle.jdbc.driver.T4CTTIoauthenticate.doOSESSKEY(T4CTTIoauthenticate.java:859)
+	at oracle.jdbc.driver.T4CConnection.authenticateWithPassword(T4CConnection.java:2277)
+	at oracle.jdbc.driver.T4CConnection.authenticateUserForLogon(T4CConnection.java:2231)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:1155)
+	at oracle.jdbc.driver.PhysicalConnection.connect(PhysicalConnection.java:1189)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:106)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:887)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:694)
+	at org.hibernate.engine.jdbc.connections.internal.DriverConnectionCreator.makeConnection(DriverConnectionCreator.java:40)
+	... 30 common frames omitted
+18:35:55.423 [main] ERROR es.eternalshadow.util.HibernateUtil - Error al crear SessionFactory
+org.hibernate.boot.registry.classloading.spi.ClassLoadingException: Unable to load class [es.cursojava.hibernate.ejercicio1.entites.Curso]
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:126)
+	at org.hibernate.boot.model.source.internal.annotations.AnnotationMetadataSourceProcessorImpl.<init>(AnnotationMetadataSourceProcessorImpl.java:103)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess$1.<init>(MetadataBuildingProcess.java:206)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:200)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.build(MetadataBuildingProcess.java:129)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:449)
+	at org.hibernate.boot.internal.MetadataBuilderImpl.build(MetadataBuilderImpl.java:101)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:949)
+	at org.hibernate.cfg.Configuration.buildSessionFactory(Configuration.java:999)
+	at es.eternalshadow.util.HibernateUtil.<clinit>(HibernateUtil.java:34)
+	at es.eternalshadow.main.GameContext.<init>(GameContext.java:45)
+	at es.eternalshadow.main.Main.main(Main.java:11)
+Caused by: java.lang.ClassNotFoundException: Could not load requested class : es.cursojava.hibernate.ejercicio1.entites.Curso
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:216)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:593)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:534)
+	at java.base/java.lang.Class.forName(Class.java:513)
+	at org.hibernate.boot.registry.classloading.internal.ClassLoaderServiceImpl.classForName(ClassLoaderServiceImpl.java:123)
+	... 11 common frames omitted
+Caused by: java.lang.Throwable: null
+	at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:209)
+	... 17 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: es.cursojava.hibernate.ejercicio1.entites.Curso
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 17 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: es.cursojava.hibernate.ejercicio1.entites.Curso
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 17 common frames omitted
+	Suppressed: java.lang.ClassNotFoundException: es.cursojava.hibernate.ejercicio1.entites.Curso
+		at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+		at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+		at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+		at org.hibernate.boot.registry.classloading.internal.AggregatedClassLoader.findClass(AggregatedClassLoader.java:206)
+		... 17 common frames omitted
