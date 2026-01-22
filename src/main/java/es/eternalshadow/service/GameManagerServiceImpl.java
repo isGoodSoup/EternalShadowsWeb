@@ -54,6 +54,9 @@ public class GameManagerServiceImpl implements GameManagerService {
                           context.getServices().getJugadorService().getJugadorPrincipal().getNombre() + "!");
         System.out.println("Tu aventura comienza ahora...");
         
+        //To do: Introducir historia inicial aquí
+        
+        
         // Entrar en loop de juego básico
         iniciarLoopJuego();
     }
