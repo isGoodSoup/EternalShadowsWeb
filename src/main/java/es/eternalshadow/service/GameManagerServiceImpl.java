@@ -52,7 +52,12 @@ public class GameManagerServiceImpl implements GameManagerService {
         
         System.out.println("\n¡Bienvenido a Eternal Shadow, " + 
                           context.getServices().getJugadorService().getJugadorPrincipal().getNombre() + "!");
-        System.out.println("Tu aventura comienza ahora...");
+        System.out.println("El Consejo del Alba ha convocado a los elegidos. Un mensajero de túnica blanca recorre las calles\r\n"
+        		+ "de Ravenport, el puerto más cercano al límite de las Tierras Sombrías. Sus palabras se escuchan\r\n"
+        		+ "entre el viento: “El Núcleo Eclipsado ha despertado. Si no es contenido antes del próximo\r\n"
+        		+ "equinoccio, la frontera entre los vivos y los muertos caerá.” Eres uno de los aventureros que\r\n"
+        		+ "respondió al llamado. Quizás por oro, por gloria, o por la promesa de redención. Sea cual sea el\r\n"
+        		+ "motivo, el destino te arrastra hacia el corazón de Varyon.");
         
         //To do: Introducir historia inicial aquí
         
